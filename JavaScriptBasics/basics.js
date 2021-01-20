@@ -69,6 +69,7 @@ console.log(true == 2); //false Other than 1 everything is false
 // 0 || false || undefined || 'Thanikai' || 1 || 0
     //Ans: 'Thanikai' (|| returns the first Truthy)
 
+// Control flow    
 //For-in loop
 for(let key in object)
     console.log(key, object[key]);
@@ -80,6 +81,7 @@ for(let index in array)
 for(let element of array) //Used to iterate Arrays
     console.log(element);
 
+//Exercise 1    
 function fizzBuzz(input) {
     if(isNaN(input))
         return 'Not a Number';
@@ -93,3 +95,43 @@ function fizzBuzz(input) {
         return 'buzz';
     return input;
 }
+
+//Exercise 2
+function checkSpeed(speed) {
+    const speedLimit = 70;
+    const kmPerPoint = 5;
+    const maxPoints = 12;
+
+    if(speed < speedLimit + kmPerPoint) {
+        console.log('Ok');
+        return;
+    }
+    let extraSpeedPoints = Math.floor((speed-speedLimit)/kmPerPoint);
+    if(extraSpeedPoints > maxPoints) {
+        console.log('License suspended');
+    } else {
+        console.log('Point: ' + extraSpeedPoints);
+    }
+}
+
+// Learnings
+    // Always use constants(ex:speedLimit) to specify numbers. Do not introduce magic numbers in the code and use it everywhere.
+    // Reduce indentation whereever possible as indentation will reduce the readability
+
+//Exercise 3
+let truthyArray = [1,2,3,4, null, undefined, '', false, 0];
+countTruthy(truthyArray);
+function countTruthy(array) {
+    let count = 0;
+    for(let element of array) {
+        if(element) count++;
+    }
+    console.log('Truthy count: ' + count);
+}
+
+// Other learnings from Exercises
+    // A function must do only a single operation not multiple
+    // Make sure to break it into muliple functions if it deviates fromt the function operation
+    // Also if your code has nested loop logic
+        // You can move the logic (The second loop) to a separate function, this will make your nested loop look better
+        // That way your code will not look like it has nested loops
